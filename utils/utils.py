@@ -74,7 +74,7 @@ def find_archives_for_page(full_page_file_name: str):
     archives = []
     p, n, e = split_file_name(full_page_file_name)
     for ext in [".zip", ".7z", ".rar"]:
-        arc_full_name = os.path.join(p, n) + ext
+        arc_full_name = os.path.join(p, n + ext)
         if os.path.isfile(arc_full_name):
             archives.append(arc_full_name)
     return archives
@@ -193,7 +193,7 @@ def extract(archive_file_name: str, write_path: str):
 
 def save_webpage(url: str, write_path: str, asset_name: str):
     # save webpage
-    web_page_file_name = os.path.join(write_path, asset_name) + ".html"
+    web_page_file_name = os.path.join(write_path, asset_name + ".html")
     print("\nDownloading asset webpage: " + web_page_file_name)
     remove_if_exist(web_page_file_name)
     command = fr'tools\monolith.exe {url} -o "{web_page_file_name}" -a -e -j -v -F'

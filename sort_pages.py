@@ -17,7 +17,6 @@ out_path = sys.argv[2]
 
 out_sub_dir = ""
 
-
 path_list = os.listdir(in_path)
 for page_file_name in path_list:
     full_page_file_name = os.path.join(in_path, page_file_name)
@@ -39,5 +38,5 @@ for page_file_name in path_list:
 
     os.rename(
         full_page_file_name,
-        os.path.join(new_path, asset_name) + ".html"
+        os.path.join(new_path, asset_name + ".html")
     )

@@ -81,7 +81,7 @@ for asset_folder_name in path_list:
         )
 
     # archive
-    new_archive_name = os.path.join(new_asset_path, asset.asset_name) + ".7z"
+    new_archive_name = os.path.join(new_asset_path, asset.asset_name + ".7z")
     archive_dir(asset.path, new_archive_name)
 
     # save webpage

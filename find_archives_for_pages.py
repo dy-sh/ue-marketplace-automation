@@ -29,7 +29,7 @@ def prompt_for_move(page_full_file_name, archive_full_file_name, auto_confirm_if
     page_path, page_name, page_ext = split_file_name(page_full_file_name)
     arc_path, arc_name, arc_ext = split_file_name(archive_full_file_name)
 
-    new_arc_file_name = os.path.join(page_path, page_name) + arc_ext
+    new_arc_file_name = os.path.join(page_path, page_name + arc_ext)
     if archive_full_file_name == new_arc_file_name:
         return True
 
@@ -106,5 +106,5 @@ for path, subs, files in os.walk(pages_path):
                 make_dir(os.path.join(pages_path, not_matched_pages_subdir))
                 os.rename(
                     page_full_file_name,
-                    os.path.join(pages_path, not_matched_pages_subdir, page_name) + page_ext
+                    os.path.join(pages_path, not_matched_pages_subdir, page_name + page_ext)
                 )

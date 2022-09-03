@@ -27,7 +27,7 @@ for i, archive_full_file_name in enumerate(archives):
 
     arc_path, arc_name, arc_ext = split_file_name(archive_full_file_name)
 
-    new_archive_name = os.path.join(arc_path, arc_name) + ".7z"
+    new_archive_name = os.path.join(arc_path, arc_name + ".7z")
     if delete_7z_archive_if_exist:
         remove_if_exist(new_archive_name)
 
