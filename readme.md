@@ -1,9 +1,9 @@
 # Unreal Engine Marketplace Automation
 
-This is a set of scripts for automating Epic Games Launcher and downloading/archiving Unreal Engine Marketplace products (assets).
+This is a set of scripts for automating the Epic Games Launcher and downloading/archiving Unreal Engine Marketplace products (assets).
 
-These scripts can be useful if you have a huge amount of assets that you would like to download and save to disk.  
-Along with the assets, web pages describing the asset will be downloaded.  
+These scripts can be useful if you have a huge amount of assets that you would like to download and save to disk.
+Along with the assets, web pages describing the assets will be downloaded. 
 Some scripts will help you get organized if you already have an asset library and would like to catalog it.
 
 The scripts use the following tools, which you can download and put in the `\tools` folder:
@@ -17,36 +17,40 @@ This script downloads assets from the Epic Games Launcher.
   
 How to use:  
   
-Create project with name `Temp`. It will be used for downloading assets. Assets will be added to this project.  
-You can override project name in `add_to_project\temp_project_name.png` file.  
-Make screenshot of title on project selection window.  
-This project must be visible in the list, when `Show all projects` checkbox selected  
-in the `Select the Project to Add the Asset to` window.  
-Use name staring from `A` if you have many projects.  
+Create project with name `Temp`. Assets will be added to this project when downloading.  
+You can override the project name in the `add_to_project\temp_project_name.png` file.  
+Take a screenshot of the title in the project selection window and save it in this file. 
+The project should be visible in the list if the `Show all projects` checkbox is selected
+in the `Select the Project to Add the Asset to` window  
+(use the project name with the letter `A` if you have many projects.  
+
   
-- Open Epic Launcher  
-- Switch it to English language (if not switched yet)  
-- Go to `Unreal Engine` tab  
-- Go To `Library` tab  
-- Select categories, or use search filter  
-- If assets `Install to Engine`/`Add to Project`/`Create Project` buttons on the screen,  
+- Open the Epic Games Launcher  
+- Switch it to English (if another language is used)  
+- Go to the `Unreal Engine` tab  
+- Go To the `Library` tab  
+- Select asset categories or use the search filter in the `Vault` section
+- If the `Install to Engine`/`Add to Project`/`Create Project` buttons appear on the screen,  
 run the script (`python download.py`) and just wait  
-- Is something goes wrong, to stop the script, press `Win+M` (or any other hotkey to hide launcher from the screen)  
+
+The script will control the cursor and download one asset after another.  
+It will automatically recognize the asset type and perform all the necessary actions.
+If something goes wrong to stop the script, press `Win + M` (or any other hotkey to hide the launcher from the screen).
   
-Assets will be downloaded to `C:\ProgramData\Epic\EpicGamesLauncher\VaultCache folder`.  
-All engine plugins will be downloaded to `C:\Program Files\Epic Games\UE_5.0\Engine\Plugins\Marketplace`  
-and manifests in `C:\Program Files\Epic Games\UE_5.0\.egstore`.  
-Clean these folders if you want to delete all downloaded cache.  
-You must save only the oldest (and largest) `.manifest` and same name `.mancpn`  
+Assets will be downloaded to the `C:\ProgramData\Epic\EpicGamesLauncher\VaultCache folder` folder.  
+Engine plugins will be downloaded to the `C:\Program Files\Epic Games\UE_5.0\Engine\Plugins\Marketplace` folder  
+and their manifests to the `C:\Program Files\Epic Games\[EngineVersion]\.egstore` folder.  
+Clear these folders if you want to delete the entire downloaded cache.  
+You should save only the oldest (and largest) `.manifest` and same named `.mancpn` file  
 in the `\.egstore` folder (this is the engine's own manifest).  
   
 
 ### archive.py
 
-This script will get all the downloaded assets from Epic Games Launcher cache folder
-and archive them to `.7z` archives.  
-Next, it will download `.html` from the Marketplace web-site and save it near the archive.  
-It takes two arguments: input and output folder.  
+This script will get all downloaded assets from the Epic Games Launcher cache folder  
+and archive them into `.7z` archives.  
+Then it will download `.html` page from the Marketplace web-site and save it next to the archive.  
+It takes two arguments: an input and an output folder.  
 
 Example:
 
@@ -55,8 +59,8 @@ Example:
 
 ### repack.py  
   
-This script will find all `.rar`/`.zip` archives in specified path  
-and repack them to `.7z` with maximum compression method.   
+This script will find all the `.rar`/`.zip` archives at the specified path  
+and repack them to `.7z` with the maximum compression method.   
   
 Example:
 
@@ -65,9 +69,9 @@ Example:
 
 ### find_archives_for_pages.py  
   
-This script will try to match saved `.html` pages with downloaded `.zip`/`.rar`/`.7z` archives.  
-It will ask you if the names don't match 100%.  
-Next, it will rename archive as page name and move it to page folder.  
+This script will try to match the saved `.html` pages with the downloaded `.zip`/`.rar`/`.7z` archives.  
+It will ask you which file to take if the names don't match 100%.  
+Then it will rename the archive according to the page name and move it to the page folder.  
   
 Example:
 
@@ -77,9 +81,9 @@ Example:
 ### remove_duplicates.py  
   
 This script will help to remove duplicates from downloaded assets.  
-It will find all saved `.html` pages and compare it names.  
-Next, it will ask you which file to keep.  
-It will remove `.html` and `.7z` file of duplicated asset.  
+It will find all the saved `.html` pages and compare their names.  
+Then it will ask you which file to keep.  
+It will delete `.html` and `.7z` files of the duplicated asset.  
   
 Example:
 
@@ -92,7 +96,7 @@ You can specify multiple folders:
 
 ### sort_pages.py  
   
-This script will sort saved `.html` from Unreal Engine Marketplace and place it by asset category.  
+This script will sort the saved `.html` pages and place them by asset categories.  
   
 Example:
 
@@ -101,8 +105,8 @@ Example:
 
 ### rename.py  
   
-This script will find all saved `.html` pages and read their titles.  
-Next, it will rename `.html` pages and archives with same name to correct asset name from page title.  
+This script will find all saved `.html` pages, will read their contents and rename the pages   
+and the archives of the same name in accordance with the name of the asset.  
   
 Example:
 
