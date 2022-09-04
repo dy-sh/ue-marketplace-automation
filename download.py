@@ -274,7 +274,6 @@ def download_from_library():
 
         height = detect_window_height()
         scroll_size = int(height * -3.5)
-        print(scroll_size)
         pyautogui.scroll(scroll_size)
 
         clicked_pos = []
