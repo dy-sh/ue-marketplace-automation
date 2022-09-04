@@ -4,6 +4,7 @@ from utils.utils import *
 
 # settings :
 delete_archived_asset = True
+overwrite_archive_if_exist = True
 
 if len(sys.argv) != 3:
     print("Please, provide input and output path as argument!")
@@ -82,10 +83,14 @@ for asset_folder_name in path_list:
 
     # archive
     new_archive_name = os.path.join(new_asset_path, asset.asset_name + ".7z")
+    if overwrite_archive_if_exist:
+        remove_if_exist(new_archive_name)
     archive_dir(asset.path, new_archive_name)
 
     # save webpage
     if asset.web_page_url != "":
+        if overwrite_archive_if_exist:
+            remove_if_exist(os.path.join(new_asset_path,asset.asset_name + ".html"))
         save_webpage(asset.web_page_url, new_asset_path, asset.asset_name)
 
     # delete old asset folder
